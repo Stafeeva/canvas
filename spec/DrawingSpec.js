@@ -1,5 +1,9 @@
+"strict mode";
+
  describe("Drawing", function() {
-   
+
+   var drawing;
+
    beforeEach(function() {
      drawing = new Drawing();
    });

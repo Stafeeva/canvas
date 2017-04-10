@@ -1,4 +1,8 @@
+"strict mode";
+
 describe("Coordinates", function() {
+
+  var coords;
 
   beforeEach(function() {
     coords = new Coordinates(1, 2);

@@ -1,3 +1,5 @@
+"strict mode";
+
 ( function(exports) {
 
   function Coordinates(x, y) {
