@@ -7,8 +7,6 @@ describe("DrawingController", function() {
   beforeEach(function() {
     drawing = jasmine.createSpyObj('drawing', ['addCoordinates'])
     drawingController = new DrawingController(drawing);
-    console.log('drawingController');
-
   });
 
   it("adds coordinates to the drawing", function() {
@@ -27,7 +25,7 @@ describe("DrawingController", function() {
 
   it("listens for a click event", function() {
     var clickSpy = spyOn(document, "addEventListener")
-    drawingController.listenForMouseDown();
+    drawingController.listenClick();
     expect(clickSpy).toHaveBeenCalled();
   });
 
