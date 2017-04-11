@@ -11,7 +11,7 @@ DrawingController.prototype.addCoordinatesToDrawing = function(e) {
 }
 
 DrawingController.prototype.listenForMouseDown = function() {
-    document.addEventListener('click', this.addCoordinatesToDrawing.bind(this));
+  document.addEventListener('click', this.addCoordinatesToDrawing.bind(this));
 }
 
   exports.DrawingController = DrawingController;
