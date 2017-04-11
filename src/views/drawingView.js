@@ -10,20 +10,24 @@
   }
 
   DrawingView.prototype.plotCoords = function(x, y) {
-    // if (!isDrawing) return; // break out if false
+    if (!this.isDrawing) return; // break out if false
+    console.log("x")
+      console.log(x)
+      console.log("y")
+      console.log(y)
 
-    this.context.beginPath();
-    this.context.moveTo(x, y); //start from
-    // this.context.lineTo(e.offsetX, e.offsetY); //go to
-    this.context.stroke();
+      this.context.beginPath();
+      this.context.moveTo(x, y); //start from
+      // this.context.lineTo(e.offsetX, e.offsetY); //go to
+      this.context.stroke();
 
-    this.context.fillStyle = '#FF0000';
-    this.context.fillRect(x,y,-5,-5);
+      // [lastX, lastY] = [e.offsetX, e.offsetY];
+
+      this.context.fillStyle = '#FF0000';
+      this.context.fillRect(x,y,-5,-5);
   };
 
-  DrawingView.prototype.methodName = function () {
-    this.context
-  };
+
 
   exports.DrawingView = DrawingView;
 
