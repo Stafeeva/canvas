@@ -7,6 +7,8 @@ describe("DrawingController", function() {
   beforeEach(function() {
     drawing = jasmine.createSpyObj('drawing', ['addCoordinates'])
     drawingController = new DrawingController(drawing);
+    console.log('drawingController');
+
   });
 
   it("adds coordinates to the drawing", function() {
@@ -18,6 +20,11 @@ describe("DrawingController", function() {
     expect(drawing.addCoordinates).toHaveBeenCalled()
   });
 
+  var dummyCanvas = document.createElement("canvas");
+  document.getElementById = function() {
+    return dummyCanvas;
+  }
+
 
   // it('listens for a click event', function() {
   //   fake = document.elementFromPoint(155, 45).click();
@@ -25,7 +32,7 @@ describe("DrawingController", function() {
   //   expect(fake).toEqual(155,45);
   // });
 
-  
+
 
   it("listens for a click event", function() {
     var clickSpy = spyOn(document, "addEventListener")
@@ -42,4 +49,3 @@ describe("DrawingController", function() {
 // });
 
 // click = jasmine.createSpy('click')
->>>>>>> 5b80abd365fc93ed00cff1bddc258eaef4a44064
