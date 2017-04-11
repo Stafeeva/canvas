@@ -13,8 +13,4 @@ describe("DrawingView", function() {
   it("is instantiated with a drawing", function() {
     expect(drawingView.drawing).toEqual(drawing);
   });
-
-
-
-
 });
