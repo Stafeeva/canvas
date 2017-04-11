@@ -11,6 +11,11 @@
 
   </head>
   <body>
+    <select id="colors">
+      <option value="#117878">Color 1</option>
+      <option value="#fface3">Color 2</option>
+    </select>
+
     <div id="outer-canvas">
       <canvas style="border:2px solid black;" id="draw" width='800' height='800'></canvas>
     </div>
@@ -19,6 +24,7 @@
       var drawing = new Drawing();
       var drawingController = new DrawingController(drawing);
       drawingController.listenForMouseDown();
+      drawingController.listenForColorChange();
     </script>
 
 

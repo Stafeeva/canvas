@@ -21,5 +21,13 @@ DrawingController.prototype.addToCanvas = function(x, y) {
   this.drawingView.plotCoords(x, y);
 }
 
+DrawingController.prototype.listenForColorChange = function() {
+  document.getElementById('colors').addEventListener('change', this.updateColor.bind(this));
+  }
+
+DrawingController.prototype.updateColor = function() {
+  this.drawingView.setColor();
+}
+
   exports.DrawingController = DrawingController;
 })(this);
