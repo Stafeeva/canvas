@@ -15,16 +15,13 @@ describe("DrawingController", function() {
   });
 
   it("listens for a click event", function() {
-    var clickSpy = spyOn(document, "addEventListener").and.callThrough();
+    var clickSpy = spyOn(document, "addEventListener")
     drawingController.listenForMouseDown();
     expect(clickSpy).toHaveBeenCalled();
   });
 });
 
-// var event = {
-//   type: 'click'
-// }
-// var clickSpy = spyOn(event, 'type');
+// Should we be testing that addCoordinatesToDrawing is called when the click happens?
 
 // var event = new MouseEvent('click', {
 //   'clientX': 144,
