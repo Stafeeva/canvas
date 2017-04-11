@@ -10,7 +10,11 @@ describe("DrawingController", function() {
   });
 
   it("adds coordinates to the drawing", function() {
-    drawingController.addCoordinatesToDrawing(155, 45);
+    var dummyEvent = {
+      clientX: 155,
+      clientY: 45
+    };
+    drawingController.addCoordinatesToDrawing(dummyEvent);
     expect(drawing.addCoordinates).toHaveBeenCalled()
   });
 
