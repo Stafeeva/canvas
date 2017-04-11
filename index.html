@@ -6,14 +6,21 @@
     <script src="src/models/Coordinates.js"></script>
     <script src="src/models/Drawing.js"></script>
     <script src="src/controllers/drawingController.js"></script>
+    <script src="src/drawingView.js"></script>
+
 
   </head>
   <body>
+    <div id="outer-canvas">
+      <canvas style="border:2px solid black;" id="draw" width='800' height='800'></canvas>
+    </div>
     <script>
+
       var drawing = new Drawing();
       var drawingController = new DrawingController(drawing);
       drawingController.listenForMouseDown();
     </script>
+
 
   </body>
 </html>

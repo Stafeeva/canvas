@@ -13,4 +13,11 @@ describe("DrawingController", function() {
     drawingController.addCoordinatesToDrawing(155,45);
     expect(drawing.addCoordinates).toHaveBeenCalled()
   });
-});
+
+  it('listens for a click event', function() {
+    fake = document.elementFromPoint(155, 45).click();
+    console.log(document.elementFromPoint(155, 45));
+    expect(fake).toEqual(155,45);
+  });
+
+  });
