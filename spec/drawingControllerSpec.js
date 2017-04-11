@@ -25,20 +25,13 @@ describe("DrawingController", function() {
     return dummyCanvas;
   }
 
-
-  // it('listens for a click event', function() {
-  //   fake = document.elementFromPoint(155, 45).click();
-  //   console.log(document.elementFromPoint(155, 45));
-  //   expect(fake).toEqual(155,45);
-  // });
-
-
-
   it("listens for a click event", function() {
     var clickSpy = spyOn(document, "addEventListener")
     drawingController.listenForMouseDown();
     expect(clickSpy).toHaveBeenCalled();
   });
+
+  it
 });
 
 // Should we be testing that addCoordinatesToDrawing is called when the click happens?
