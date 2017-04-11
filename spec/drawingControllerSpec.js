@@ -3,12 +3,16 @@
 describe("DrawingController", function() {
 
   var drawing;
+  var originalDocument = document.getElementById;
 
   beforeEach(function() {
     drawing = jasmine.createSpyObj('drawing', ['addCoordinates'])
     drawingController = new DrawingController(drawing);
-    console.log('drawingController');
+    spyOn(drawingController, 'drawingView').and.returnValue(true);
+  });
 
+  afterEach(function() {
+    document.getElementById = originalDocument;
   });
 
   it("adds coordinates to the drawing", function() {
@@ -20,18 +24,28 @@ describe("DrawingController", function() {
     expect(drawing.addCoordinates).toHaveBeenCalled()
   });
 
-  var dummyCanvas = document.createElement("canvas");
-  document.getElementById = function() {
-    return dummyCanvas;
-  }
-
   it("listens for a click event", function() {
+    var dummyCanvas = document.createElement("canvas");
+    document.getElementById = function() {
+      return dummyCanvas;
+    }
+
     var clickSpy = spyOn(document, "addEventListener")
     drawingController.listenForMouseDown();
     expect(clickSpy).toHaveBeenCalled();
   });
 
-  it
+  it('listens for a color change', function() {
+    var dummyColorMenu = document.createElement('select')
+    document.getElementById = function() {
+      return dummyColorMenu;
+    }
+
+    var colorSpy = spyOn(dummyColorMenu, "addEventListener")
+    drawingController.listenForColorChange();
+    expect(colorSpy).toHaveBeenCalled();
+
+  })
 });
 
 // Should we be testing that addCoordinatesToDrawing is called when the click happens?

@@ -7,13 +7,20 @@
     <script src="src/models/Drawing.js"></script>
     <script src="src/controllers/drawingController.js"></script>
     <script src="src/views/drawingView.js"></script>
+<style style="text/css">
 
+select option[value="#ff0000"] {
+  background-color: rgba(255, 0, 0, 0.7);;
+}
+</style>
 
   </head>
   <body>
-    <select id="colors">
-      <option value="#117878">Color 1</option>
-      <option value="#fface3">Color 2</option>
+    <select id="colors" style="height:30px; width:70px">
+      <option value="#000000">Black</option>
+      <option value="#ff0000">Red</option>
+      <option value="#00ff00">Green</option>
+      <option value="#0000ff">Blue</option>
     </select>
 
     <div id="outer-canvas">
