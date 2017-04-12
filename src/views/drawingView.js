@@ -6,7 +6,7 @@
     this.drawing = drawing;
     this.canvas = document.getElementById('draw');
     this.context = this.canvas.getContext('2d');
-    this.colors = '#000';
+    this.colors = '#AB2567';
     this.isDrawing = false;
     this.lineWidth = 10;
   }
