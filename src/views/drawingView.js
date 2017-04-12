@@ -7,8 +7,6 @@
     this.canvas = document.getElementById('draw');
     this.context = this.canvas.getContext('2d');
     this.isDrawing = false;
-    // this.lastX = drawing.returnLastCoordinates.x;
-    // this.lastY = drawing.returnLastCoordinates.y;
   }
 
   DrawingView.prototype.plotCoords = function(x, y) {
@@ -24,11 +22,7 @@
 
       [this.lastX, this.lastY] = [x, y];
 
-      // this.context.fillStyle = '#FF0000';
-      // this.context.fillRect(x,y,-5,-5);
   };
-
-
 
   exports.DrawingView = DrawingView;
 
