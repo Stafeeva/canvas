@@ -5,7 +5,7 @@
   function DrawingController(drawing) {
     this.drawing = drawing;
     this.drawingView = new DrawingView(drawing);
-  }``
+  }
 
   DrawingController.prototype.addCoordinatesToDrawing = function(e) {
     this.drawing.addCoordinates(e.clientX, e.clientY);
@@ -35,7 +35,6 @@
     var controller = this;
     document.addEventListener('mousemove', function(e) {
       controller.addCoordinatesToDrawing(e);
-      // controller.addToCanvas();
     });
   };
 
@@ -45,6 +44,31 @@
     this.drawingView.plotCoords(x, y);
   };
 
-    exports.DrawingController = DrawingController;
+  DrawingController.prototype.listenForColorChange = function() {
+    var colorOptions = document.getElementsByClassName('colors');
+    var controller = this;
+    for (var i = 0; i < colorOptions.length; i++) {
+      colorOptions[i].addEventListener('click', function(e) {
+        controller.updateColor(e.target.id);
+      })
+    };
+  }
+
+  DrawingController.prototype.updateColor = function(colorId) {
+    this.drawingView.setColor(colorId);
+  }
+
+  DrawingController.prototype.resetDrawing = function () {
+    this.drawing = new Drawing();
+    this.drawingView = new DrawingView(this.drawing);
+    this.drawingView.clearCanvas();
+  };
+
+  DrawingController.prototype.listenForReset = function () {
+    var reset = document.getElementById("reset")
+    reset.addEventListener('click', this.resetDrawing.bind(this));
+  };
+
+   exports.DrawingController = DrawingController;
 
 })(this);

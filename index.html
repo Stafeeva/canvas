@@ -7,10 +7,24 @@
     <script src="src/models/Drawing.js"></script>
     <script src="src/controllers/drawingController.js"></script>
     <script src="src/views/drawingView.js"></script>
+<style style="text/css">
 
+select option[value="#ff0000"] {
+  background-color: rgba(255, 0, 0, 0.7);;
+}
+</style>
 
   </head>
   <body>
+    <!-- <select id="colors" style="height:30px; width:70px"> -->
+      <button class="colors" id="#000000">Black</button>
+      <button class="colors" id="#ff0000">Red</button>
+      <button class="colors" id="#00ff00">Green</button>
+      <button class="colors" id="#0000ff">Blue</button>
+    <!-- </select> -->
+
+      <button id="reset">Reset</button>
+
     <div id="outer-canvas">
       <canvas style="border:2px solid black;" id="draw" width='800' height='800'></canvas>
     </div>
@@ -19,8 +33,10 @@
       var drawing = new Drawing();
       var drawingController = new DrawingController(drawing);
       drawingController.listenForMouseDown();
+      drawingController.listenForColorChange();
       drawingController.listenForMouseUp();
       drawingController.listenForMouseMove();
+      drawingController.listenForReset();
     </script>
 
 

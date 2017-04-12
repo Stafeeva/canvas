@@ -3,6 +3,7 @@
 describe("DrawingController", function() {
 
   var drawing;
+  var drawingController;
 
   beforeEach(function() {
 
@@ -20,16 +21,23 @@ describe("DrawingController", function() {
     expect(drawing.addCoordinates).toHaveBeenCalled();
   });
 
-  var dummyCanvas = document.createElement("canvas");
-  document.getElementById = function() {
-    return dummyCanvas;
-  };
-
   it("listens for a click event", function() {
-    var clickSpy = spyOn(document, "addEventListener");
-    drawingController.listenClick();
+    var clickSpy = spyOn(document, "addEventListener")
+    drawingController.listenForMouseDown();
     expect(clickSpy).toHaveBeenCalled();
   });
+
+  it('listens for a color change', function() {
+    var dummyColor = document.createElement('button')
+    dummyColor.id = '#ff0000'
+    document.getElementsByClassName = function() {
+      return [dummyColor];
+    }
+
+    var colorSpy = spyOn(dummyColor, "addEventListener")
+    drawingController.listenForColorChange();
+    expect(colorSpy).toHaveBeenCalled();
+  })
 
   it("listens for a mousedown event", function() {
     var mouseDownSpy = spyOn(document, "addEventListener");
@@ -41,6 +49,14 @@ describe("DrawingController", function() {
     var mouseUpSpy = spyOn(document, "addEventListener");
     drawingController.listenForMouseUp();
     expect(mouseUpSpy).toHaveBeenCalled();
+  });
+
+  describe("reset", function() {
+    it("resets the drawing to a new Drawing", function() {
+      drawingController.resetDrawing();
+      expect(drawingController.drawingView.drawing).not.toEqual(drawing);
+
+    });
   });
 });
 
