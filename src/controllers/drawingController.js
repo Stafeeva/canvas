@@ -54,7 +54,6 @@
 
   DrawingController.prototype.listenForToolSizeChange = function() {
     var sizeOptions = document.getElementsByClassName('tool-sizes');
-    console.log(sizeOptions);
     var controller = this;
     for (var i = 0; i < sizeOptions.length; i++) {
       sizeOptions[i].addEventListener('click', function(e) {

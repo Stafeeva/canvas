@@ -29,7 +29,6 @@ describe("DrawingController", function() {
     drawing.returnLastCoordinates.and.returnValue([1,100])
     drawingController.addCoordinatesToDrawing(dummyEvent);
     expect(drawing.addCoordinates).toHaveBeenCalled();
-    // drawing.returnLastCoordinates.and.callThrough();
   });
 
   describe('mouse events', function() {
@@ -45,7 +44,7 @@ describe("DrawingController", function() {
       drawingController.listenForMouseDown();
       expect(mouseDownSpy).toHaveBeenCalled();
     });
-    
+
     it("listens for a mouseup event", function() {
       var mouseUpSpy = spyOn(document, "addEventListener");
       drawingController.listenForMouseUp();
@@ -73,7 +72,7 @@ describe("DrawingController", function() {
       expect(drawingController.drawingView.drawing).not.toEqual(drawing);
     });
   });
-  
+
   describe("tool-sizes", function() {
     it('listens for a tool size change', function() {
     var dummySize = document.createElement('button')
@@ -86,7 +85,7 @@ describe("DrawingController", function() {
     drawingController.listenForToolSizeChange();
     expect(sizeSpy).toHaveBeenCalled();
   });
- };
+});
 });
 
 // Should we be testing that addCoordinatesToDrawing is called when the click happens?

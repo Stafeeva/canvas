@@ -25,14 +25,12 @@
       this.context.strokeStyle = this.colors;
       this.context.lineJoin = 'round';
       this.context.lineCap = 'round';
-      this.context.lineWidth = this.lineWidth; // We need this! Don't delete!
+      this.context.lineWidth = this.lineWidth;
       this.context.beginPath();
       this.context.moveTo(this.lastX, this.lastY); //start from
       this.context.lineTo(x, y); //go to
       this.context.stroke();
       [this.lastX, this.lastY] = [x, y];
-//       this.context.fillStyle = this.colors;
-
   };
 
   DrawingView.prototype.clearCanvas = function () {
