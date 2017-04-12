@@ -49,6 +49,13 @@ describe("DrawingController", function() {
     expect(mouseUpSpy).toHaveBeenCalled();
   });
 
+  describe("reset", function() {
+    it("resets the drawing to a new Drawing", function() {
+      drawingController.resetDrawing();
+      expect(drawingController.drawingView.drawing).not.toEqual(drawing);
+
+    });
+  });
 });
 
 // Should we be testing that addCoordinatesToDrawing is called when the click happens?
