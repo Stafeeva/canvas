@@ -27,6 +27,10 @@
       this.context.fillRect(x,y,-5,-5);
   };
 
+  DrawingView.prototype.clearCanvas = function () {
+    this.context.clearRect(0, 0, this.canvas.width, this.canvas.height)
+  };
+
   exports.DrawingView = DrawingView;
 
 })(this);
