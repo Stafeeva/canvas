@@ -4,8 +4,16 @@ describe("DrawingController", function() {
 
   var drawing;
 
+  // function Drawing(){}
+  //
+  // Drawing.prototype.returnLastCoordinates(){
+  //   return
+  // }
+
   beforeEach(function() {
-    drawing = jasmine.createSpyObj('drawing', ['addCoordinates']);
+    drawing = jasmine.createSpyObj('drawing', ['addCoordinates', 'returnLastCoordinates']);
+    // spyOn(drawing, 'returnLastCoordinates').and.returnValue([1,100]);
+    // drawing = new Drawing
     drawingController = new DrawingController(drawing);
   });
 

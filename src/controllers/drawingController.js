@@ -9,7 +9,9 @@ function DrawingController(drawing) {
 
 DrawingController.prototype.addCoordinatesToDrawing = function(e) {
   this.drawing.addCoordinates(e.clientX, e.clientY);
-  this.addToCanvas(e.clientX, e.clientY);
+  console.log(this.drawing)
+  this.addToCanvas();
+  // this.addToCanvas(e.clientX, e.clientY);
 };
 
 DrawingController.prototype.listenClick = function() {
@@ -21,14 +23,14 @@ DrawingController.prototype.listenForMouseDown = function() {
   document.addEventListener('mousedown', function(e) {
     controller.addCoordinatesToDrawing(e);
     controller.drawingView.isDrawing = true;
-    [x, y] = [e.offsetX, e.offsetY];
+    // [x, y] = [e.offsetX, e.offsetY];
   });
 };
 
 DrawingController.prototype.listenForMouseUp = function () {
   var controller = this;
   document.addEventListener('mouseup', function(e) {
-    controller.addCoordinatesToDrawing(e);
+    // controller.addCoordinatesToDrawing(e);
     controller.drawingView.isDrawing = false;
   });
 };
@@ -37,11 +39,16 @@ DrawingController.prototype.listenForMouseMove= function () {
   var controller = this;
   document.addEventListener('mousemove', function(e) {
     controller.addCoordinatesToDrawing(e);
-    controller.drawingView.plotCoords();
+    controller.addToCanvas()
   });
 };
 
-DrawingController.prototype.addToCanvas = function(x, y) {
+var x;
+var y;
+
+DrawingController.prototype.addToCanvas = function() {
+  x = this.drawing.returnLastCoordinates().x;
+  y = this.drawing.returnLastCoordinates().y;
   this.drawingView.plotCoords(x, y);
 };
 
