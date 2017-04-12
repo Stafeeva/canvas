@@ -21,7 +21,7 @@ DrawingController.prototype.listenForMouseDown = function() {
   document.addEventListener('mousedown', function(e) {
     controller.addCoordinatesToDrawing(e);
     controller.drawingView.isDrawing = true;
-    [lastX, lastY] = [e.offsetX, e.offsetY];
+    [x, y] = [e.offsetX, e.offsetY];
   });
 };
 

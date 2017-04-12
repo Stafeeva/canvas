@@ -7,6 +7,8 @@
     this.canvas = document.getElementById('draw');
     this.context = this.canvas.getContext('2d');
     this.isDrawing = false;
+    this.lastX = 0;
+    this.lastY = 0;
   }
 
   DrawingView.prototype.plotCoords = function(x, y) {
@@ -16,15 +18,20 @@
       console.log("y")
       console.log(y)
 
+      this.context.strokeStyle = '#BADA55';
+      this.context.lineJoin = 'round';
+      this.context.lineCap = 'round';
+      this.context.lineWidth = 10;
       this.context.beginPath();
-      this.context.moveTo(x, y); //start from
-      // this.context.lineTo(e.offsetX, e.offsetY); //go to
+      this.context.moveTo(this.lastX, this.lastY); //start from
+      this.context.lineTo(x, y); //go to
       this.context.stroke();
 
-      // [lastX, lastY] = [e.offsetX, e.offsetY];
 
-      this.context.fillStyle = '#FF0000';
-      this.context.fillRect(x,y,-5,-5);
+      [this.lastX, this.lastY] = [x, y];
+
+      // this.context.fillStyle = '#FF0000';
+      // this.context.fillRect(x,y,-5,-5);
   };
 
 
