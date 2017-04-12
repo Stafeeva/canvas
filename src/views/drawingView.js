@@ -16,15 +16,18 @@
 
   DrawingView.prototype.plotCoords = function(x, y) {
     if (!this.isDrawing) return; // break out if false
+
+      this.context.strokeStyle = this.colors;
+      this.context.lineJoin = 'round';
+      this.context.lineCap = 'round';
+      this.context.lineWidth = 10;
       this.context.beginPath();
-      this.context.moveTo(x, y); //start from
-      // this.context.lineTo(e.offsetX, e.offsetY); //go to
+      this.context.moveTo(this.lastX, this.lastY); //start from
+      this.context.lineTo(x, y); //go to
       this.context.stroke();
+      [this.lastX, this.lastY] = [x, y];
+//       this.context.fillStyle = this.colors;
 
-      // [lastX, lastY] = [e.offsetX, e.offsetY];
-
-      this.context.fillStyle = this.colors;
-      this.context.fillRect(x,y,-5,-5);
   };
 
   DrawingView.prototype.clearCanvas = function () {
@@ -32,5 +35,4 @@
   };
 
   exports.DrawingView = DrawingView;
-
 })(this);

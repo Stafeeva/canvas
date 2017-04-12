@@ -10,6 +10,10 @@
     this.coordinates.push(new Coordinates(x, y));
   };
 
+  Drawing.prototype.returnLastCoordinates = function () {
+    return this.coordinates.slice(-1)[0];
+  };
+
   exports.Drawing = Drawing;
 
 })(this);

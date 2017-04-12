@@ -6,11 +6,17 @@
 
    beforeEach(function() {
      drawing = new Drawing();
+     drawing.addCoordinates(1,2);
    });
 
    it("should create and save coordinates", function() {
-     drawing.addCoordinates(1,2);
      expect(drawing.coordinates[0].x).toEqual(1);
      expect(drawing.coordinates[0].y).toEqual(2);
    });
+
+   it("should return last coordinates", function() {
+     drawing.addCoordinates(150,200);
+     expect(drawing.returnLastCoordinates().x).toEqual(150);
+     expect(drawing.returnLastCoordinates().y).toEqual(200);
+   })
  })
