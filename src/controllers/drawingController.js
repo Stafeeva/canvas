@@ -45,5 +45,19 @@ DrawingController.prototype.addToCanvas = function(x, y) {
   this.drawingView.plotCoords(x, y);
 };
 
+DrawingController.prototype.listenForColorChange = function() {
+  var colorOptions = document.getElementsByClassName('colors');
+  var controller = this;
+  for (var i = 0; i < colorOptions.length; i++) {
+    colorOptions[i].addEventListener('click', function(e) {
+      controller.updateColor(e.target.id);
+    })
+  };
+}
+
+DrawingController.prototype.updateColor = function(colorId) {
+  this.drawingView.setColor(colorId);
+}
+
   exports.DrawingController = DrawingController;
 })(this);
