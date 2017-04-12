@@ -8,7 +8,7 @@
   }
 
   DrawingController.prototype.addCoordinatesToDrawing = function(e) {
-    this.drawing.addCoordinates(e.clientX, e.clientY);
+    this.drawing.addCoordinates(e.offsetX, e.offsetY);
     this.addToCanvas();
   };
 
