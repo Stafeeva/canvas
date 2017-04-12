@@ -27,6 +27,18 @@ describe("DrawingController", function() {
     expect(clickSpy).toHaveBeenCalled();
   });
 
+  it('listens for a tool size change', function() {
+    var dummySize = document.createElement('button')
+    dummySize.id = '50'
+    document.getElementsByClassName = function() {
+      return [dummySize];
+    }
+
+    var sizeSpy = spyOn(dummySize, "addEventListener")
+    drawingController.listenForToolSizeChange();
+    expect(sizeSpy).toHaveBeenCalled();
+  })
+
   it('listens for a color change', function() {
     var dummyColor = document.createElement('button')
     dummyColor.id = '#ff0000'
@@ -61,10 +73,3 @@ describe("DrawingController", function() {
 });
 
 // Should we be testing that addCoordinatesToDrawing is called when the click happens?
-
-// var event = new MouseEvent('click', {
-//   'clientX': 144,
-//   'clientY': 240
-// });
-
-// click = jasmine.createSpy('click')

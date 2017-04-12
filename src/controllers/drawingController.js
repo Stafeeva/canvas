@@ -54,6 +54,21 @@
     };
   }
 
+  DrawingController.prototype.listenForToolSizeChange = function() {
+    var sizeOptions = document.getElementsByClassName('tool-sizes');
+    console.log(sizeOptions);
+    var controller = this;
+    for (var i = 0; i < sizeOptions.length; i++) {
+      sizeOptions[i].addEventListener('click', function(e) {
+        controller.updateSize(e.target.id);
+      })
+    };
+  }
+
+  DrawingController.prototype.updateSize = function(sizeId) {
+    this.drawingView.setSize(sizeId);
+  }
+
   DrawingController.prototype.updateColor = function(colorId) {
     this.drawingView.setColor(colorId);
   }
