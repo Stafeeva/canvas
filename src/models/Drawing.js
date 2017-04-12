@@ -11,9 +11,7 @@
   };
 
   Drawing.prototype.returnLastCoordinates = function () {
-    console.log(this.coordinates);
-    console.log(this.coordinates.slice(-1));
-    return this.coordinates.slice(-1);
+    return this.coordinates.slice(-1)[0];
   };
 
   exports.Drawing = Drawing;
