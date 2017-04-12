@@ -19,13 +19,7 @@ describe("DrawingController", function() {
     expect(drawing.addCoordinates).toHaveBeenCalled();
   });
 
-
   it("listens for a click event", function() {
-    var dummyCanvas = document.createElement("canvas");
-    document.getElementById = function() {
-      return dummyCanvas;
-    }
-
     var clickSpy = spyOn(document, "addEventListener")
     drawingController.listenForMouseDown();
     expect(clickSpy).toHaveBeenCalled();
@@ -42,17 +36,6 @@ describe("DrawingController", function() {
     drawingController.listenForColorChange();
     expect(colorSpy).toHaveBeenCalled();
   })
-
-  var dummyCanvas = document.createElement("canvas");
-  document.getElementById = function() {
-    return dummyCanvas;
-  };
-
-  it("listens for a click event", function() {
-    var clickSpy = spyOn(document, "addEventListener");
-    drawingController.listenClick();
-    expect(clickSpy).toHaveBeenCalled();
-  });
 
   it("listens for a mousedown event", function() {
     var mouseDownSpy = spyOn(document, "addEventListener");
