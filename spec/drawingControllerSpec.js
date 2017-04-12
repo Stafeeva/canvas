@@ -3,7 +3,8 @@
 describe("DrawingController", function() {
 
   var drawing;
-  var originalDocument = document.getElementById;
+  // var originalDocument = document.getElementById;
+  var drawingController;
 
   beforeEach(function() {
     drawing = jasmine.createSpyObj('drawing', ['addCoordinates'])
@@ -11,9 +12,9 @@ describe("DrawingController", function() {
     spyOn(drawingController, 'drawingView').and.returnValue(true);
   });
 
-  afterEach(function() {
-    document.getElementById = originalDocument;
-  });
+  // afterEach(function() {
+  //   document.getElementById = originalDocument;
+  // });
 
   it("adds coordinates to the drawing", function() {
     var dummyEvent = {
@@ -36,15 +37,15 @@ describe("DrawingController", function() {
   });
 
   it('listens for a color change', function() {
-    var dummyColorMenu = document.createElement('select')
-    document.getElementById = function() {
-      return dummyColorMenu;
+    var dummyColor = document.createElement('button')
+    dummyColor.id = '#ff0000'
+    document.getElementsByClassName = function() {
+      return [dummyColor];
     }
 
-    var colorSpy = spyOn(dummyColorMenu, "addEventListener")
+    var colorSpy = spyOn(dummyColor, "addEventListener")
     drawingController.listenForColorChange();
     expect(colorSpy).toHaveBeenCalled();
-
   })
 });
 

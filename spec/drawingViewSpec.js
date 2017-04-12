@@ -4,17 +4,15 @@ describe("DrawingView", function() {
 
   var drawing;
   var drawingView;
+  var dummyCanvas;
 
   beforeEach(function() {
-    console.log('this test');
     drawing = jasmine.createSpy('drawing');
-    spyOn(drawingView.canvas, 'getContext');
+    dummyCanvas = document.createElement('canvas');
+    dummyCanvas.setAttribute('id', 'draw');
+    dummyCanvas.setAttribute('context', '2d');
+    document['getElementById'] = function(){return dummyCanvas;};
     drawingView = new DrawingView(drawing);
-    console.log(drawingView);
-
-    // dummyCanvas = document.createElement('canvas');
-    // dummyCanvas.id = 'draw';
-    // dummyCanvas.context = '2d';
   });
 
   it("is instantiated with a drawing", function() {

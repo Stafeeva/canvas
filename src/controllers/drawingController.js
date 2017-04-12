@@ -22,11 +22,17 @@ DrawingController.prototype.addToCanvas = function(x, y) {
 }
 
 DrawingController.prototype.listenForColorChange = function() {
-  document.getElementById('colors').addEventListener('change', this.updateColor.bind(this));
-  }
+  var colorOptions = document.getElementsByClassName('colors');
+  var controller = this;
+  for (var i = 0; i < colorOptions.length; i++) {
+    colorOptions[i].addEventListener('click', function(e) {
+      controller.updateColor(e.target.id);
+    })
+  };
+}
 
-DrawingController.prototype.updateColor = function() {
-  this.drawingView.setColor();
+DrawingController.prototype.updateColor = function(colorId) {
+  this.drawingView.setColor(colorId);
 }
 
   exports.DrawingController = DrawingController;
