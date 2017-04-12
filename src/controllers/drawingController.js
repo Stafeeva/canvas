@@ -59,5 +59,15 @@ DrawingController.prototype.updateColor = function(colorId) {
   this.drawingView.setColor(colorId);
 }
 
+DrawingController.prototype.resetDrawing = function () {
+  this.drawing = new Drawing();
+  this.drawingView = new DrawingView(this.drawing);
+};
+
+DrawingController.prototype.listenForReset = function () {
+  var reset = document.getElementById("reset")
+  reset.addEventListener('click', this.resetDrawing.bind(this));
+};
+
   exports.DrawingController = DrawingController;
 })(this);

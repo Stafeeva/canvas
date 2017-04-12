@@ -23,6 +23,8 @@ select option[value="#ff0000"] {
       <button class="colors" id="#0000ff">Blue</button>
     <!-- </select> -->
 
+      <button id="reset">Reset</button>
+
     <div id="outer-canvas">
       <canvas style="border:2px solid black;" id="draw" width='800' height='800'></canvas>
     </div>
@@ -34,6 +36,7 @@ select option[value="#ff0000"] {
       drawingController.listenForColorChange();
       drawingController.listenForMouseUp();
       drawingController.listenForMouseMove();
+      drawingController.listenForReset();
     </script>
 
 
