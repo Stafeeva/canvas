@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>Canvas</title>
+    <script src="jscolor.js"></script>
     <script src="src/models/Coordinates.js"></script>
     <script src="src/models/Drawing.js"></script>
     <script src="src/controllers/drawingController.js"></script>
@@ -18,11 +19,15 @@
   </head>
   <body>
     <!-- <select id="colors" style="height:30px; width:70px"> -->
-      <button class="colors" id="#000000">Black</button>
+      <!-- <button class="colors" id="#000000">Black</button>
       <button class="colors" id="#ff0000">Red</button>
       <button class="colors" id="#00ff00">Green</button>
-      <button class="colors" id="#0000ff">Blue</button>
+      <button class="colors" id="#0000ff">Blue</button> -->
+      <input id="hex-colors" class="jscolor" value="ab2567">
+
       <button class="colors" id="#fff">Eraser</button>
+
+
     <!-- </select> -->
 
       <button id="reset">Reset</button>

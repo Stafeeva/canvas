@@ -45,13 +45,11 @@
   };
 
   DrawingController.prototype.listenForColorChange = function() {
-    var colorOptions = document.getElementsByClassName('colors');
     var controller = this;
-    for (var i = 0; i < colorOptions.length; i++) {
-      colorOptions[i].addEventListener('click', function(e) {
-        controller.updateColor(e.target.id);
-      })
-    };
+    var colorOptions = document.getElementById('hex-colors').addEventListener('change', function(e) {
+      var color = "#" + e.target.value;
+      controller.updateColor(color);
+    });
   }
 
   DrawingController.prototype.updateColor = function(colorId) {

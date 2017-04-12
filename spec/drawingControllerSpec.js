@@ -4,12 +4,17 @@ describe("DrawingController", function() {
 
   var drawing;
   var drawingController;
+  var originalDocument;
 
   beforeEach(function() {
-
+    originalDocument = document.getElementById;
     drawing = jasmine.createSpyObj('drawing', ['addCoordinates', 'returnLastCoordinates']);
     drawingController = new DrawingController(drawing);
   });
+
+  afterEach(function() {
+    document.getElementById = originalDocument;
+  })
 
   it("adds coordinates to the drawing", function() {
     var dummyEvent = {
@@ -21,35 +26,41 @@ describe("DrawingController", function() {
     expect(drawing.addCoordinates).toHaveBeenCalled();
   });
 
-  it("listens for a click event", function() {
-    var clickSpy = spyOn(document, "addEventListener")
-    drawingController.listenForMouseDown();
-    expect(clickSpy).toHaveBeenCalled();
-  });
+  describe('mouse events', function() {
 
-  it('listens for a color change', function() {
-    var dummyColor = document.createElement('button')
-    dummyColor.id = '#ff0000'
-    document.getElementsByClassName = function() {
-      return [dummyColor];
-    }
+    it("listens for a click event", function() {
+      var clickSpy = spyOn(document, "addEventListener")
+      drawingController.listenForMouseDown();
+      expect(clickSpy).toHaveBeenCalled();
+    });
 
-    var colorSpy = spyOn(dummyColor, "addEventListener")
-    drawingController.listenForColorChange();
-    expect(colorSpy).toHaveBeenCalled();
+    it("listens for a mousedown event", function() {
+      var mouseDownSpy = spyOn(document, "addEventListener");
+      drawingController.listenForMouseDown();
+      expect(mouseDownSpy).toHaveBeenCalled();
+    });
+
+    it("listens for a mouseup event", function() {
+      var mouseUpSpy = spyOn(document, "addEventListener");
+      drawingController.listenForMouseUp();
+      expect(mouseUpSpy).toHaveBeenCalled();
+    });
   })
 
-  it("listens for a mousedown event", function() {
-    var mouseDownSpy = spyOn(document, "addEventListener");
-    drawingController.listenForMouseDown();
-    expect(mouseDownSpy).toHaveBeenCalled();
-  });
+  describe("colors", function() {
+    it('listens for a color change', function() {
+      var dummyColor = document.createElement('hex-colors');
+      dummyColor.value = 'ff0000';
+      document.getElementById = function() {
+        return dummyColor;
+      }
 
-  it("listens for a mouseup event", function() {
-    var mouseUpSpy = spyOn(document, "addEventListener");
-    drawingController.listenForMouseUp();
-    expect(mouseUpSpy).toHaveBeenCalled();
-  });
+      var colorSpy = spyOn(dummyColor, "addEventListener")
+      drawingController.listenForColorChange();
+      expect(colorSpy).toHaveBeenCalled();
+    })
+  })
+
 
   describe("reset", function() {
     it("resets the drawing to a new Drawing", function() {
@@ -58,6 +69,8 @@ describe("DrawingController", function() {
 
     });
   });
+
+
 });
 
 // Should we be testing that addCoordinatesToDrawing is called when the click happens?
