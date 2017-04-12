@@ -16,46 +16,15 @@ describe("DrawingController", function() {
       clientX: 155,
       clientY: 45
     };
-    drawing.returnLastCoordinates.and.returnValue([1,100])
+    drawing.returnLastCoordinates.and.returnValue([1,100]);
     drawingController.addCoordinatesToDrawing(dummyEvent);
     expect(drawing.addCoordinates).toHaveBeenCalled();
-  });
-
-  it("listens for a click event", function() {
-    var clickSpy = spyOn(document, "addEventListener")
-    drawingController.listenForMouseDown();
-    expect(clickSpy).toHaveBeenCalled();
-  });
-
-  it('listens for a color change', function() {
-    var dummyColor = document.createElement('button')
-    dummyColor.id = '#ff0000'
-    document.getElementsByClassName = function() {
-      return [dummyColor];
-    }
-
-    var colorSpy = spyOn(dummyColor, "addEventListener")
-    drawingController.listenForColorChange();
-    expect(colorSpy).toHaveBeenCalled();
-  })
-
-  it("listens for a mousedown event", function() {
-    var mouseDownSpy = spyOn(document, "addEventListener");
-    drawingController.listenForMouseDown();
-    expect(mouseDownSpy).toHaveBeenCalled();
-  });
-
-  it("listens for a mouseup event", function() {
-    var mouseUpSpy = spyOn(document, "addEventListener");
-    drawingController.listenForMouseUp();
-    expect(mouseUpSpy).toHaveBeenCalled();
   });
 
   describe("reset", function() {
     it("resets the drawing to a new Drawing", function() {
       drawingController.resetDrawing();
       expect(drawingController.drawingView.drawing).not.toEqual(drawing);
-
     });
   });
 });
