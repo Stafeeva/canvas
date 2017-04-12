@@ -5,11 +5,10 @@
   function DrawingController(drawing) {
     this.drawing = drawing;
     this.drawingView = new DrawingView(drawing);
-  }
+  }``
 
   DrawingController.prototype.addCoordinatesToDrawing = function(e) {
     this.drawing.addCoordinates(e.clientX, e.clientY);
-    console.log(this.drawing)
     this.addToCanvas();
   };
 
@@ -36,7 +35,7 @@
     var controller = this;
     document.addEventListener('mousemove', function(e) {
       controller.addCoordinatesToDrawing(e);
-      controller.addToCanvas();
+      // controller.addToCanvas();
     });
   };
 
@@ -47,5 +46,5 @@
   };
 
     exports.DrawingController = DrawingController;
-    
+
 })(this);
