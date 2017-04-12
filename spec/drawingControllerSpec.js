@@ -9,6 +9,10 @@ describe("DrawingController", function() {
   beforeEach(function() {
     originalDocument = document.getElementById;
     drawing = jasmine.createSpyObj('drawing', ['addCoordinates', 'returnLastCoordinates']);
+    dummyCanvas = document.createElement('canvas');
+    dummyCanvas.setAttribute('id', 'draw');
+    dummyCanvas.setAttribute('context', '2d');
+    document['getElementById'] = function(){return dummyCanvas;};
     drawingController = new DrawingController(drawing);
   });
 
@@ -21,9 +25,11 @@ describe("DrawingController", function() {
       clientX: 155,
       clientY: 45
     };
+
     drawing.returnLastCoordinates.and.returnValue([1,100])
     drawingController.addCoordinatesToDrawing(dummyEvent);
     expect(drawing.addCoordinates).toHaveBeenCalled();
+    // drawing.returnLastCoordinates.and.callThrough();
   });
 
   describe('mouse events', function() {
