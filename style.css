@@ -67,7 +67,7 @@ body {
 #hex-colors {
   width:80px;
 }
-#eraser, #reset {
+#eraser, #reset, #undo, #save {
   background-color: white;
   width:50px;
   margin:3px;
