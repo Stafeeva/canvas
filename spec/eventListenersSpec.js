@@ -14,6 +14,12 @@ describe("eventListener", function() {
     expect(mouseUpSpy).toHaveBeenCalled();
   });
 
+  it("listens for a mouseout event", function() {
+    var mouseOutSpy = spyOn(document, "addEventListener");
+    eventListener.listenForMouseOut(dummyDrawingController);
+    expect(mouseOutSpy).toHaveBeenCalled();
+  });
+
   it("listens for a mousemove event", function() {
     var mouseMoveSpy = spyOn(document, "addEventListener");
     eventListener.listenForMouseMove(dummyDrawingController);

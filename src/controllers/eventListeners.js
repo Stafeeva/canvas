@@ -18,7 +18,14 @@
 
   listenForMouseMove= function (controller) {
     document.addEventListener('mousemove', function(e) {
+      // controller.drawingView.isDrawing = false;
       controller.addCoordinatesToDrawing(e);
+    });
+  };
+
+  listenForMouseOut= function (controller) {
+    document.addEventListener('mouseout', function(e) {
+      controller.drawingView.isDrawing = false;
     });
   };
 
@@ -56,6 +63,7 @@
     listenForMouseDown: listenForMouseDown,
     listenForMouseMove : listenForMouseMove,
     listenForMouseUp : listenForMouseUp,
+    listenForMouseOut : listenForMouseOut,
     listenForColorChange : listenForColorChange,
     listenForReset : listenForReset,
     listenForToolSizeChange : listenForToolSizeChange,

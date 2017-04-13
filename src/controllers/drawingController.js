@@ -16,10 +16,12 @@
     eventListener.listenForMouseDown(this);
     eventListener.listenForMouseUp(this);
     eventListener.listenForMouseMove(this);
+    eventListener.listenForMouseOut(this);
     eventListener.listenForColorChange(this);
     eventListener.listenForReset(this);
     eventListener.listenForToolSizeChange(this);
     eventListener.listenForEraser(this);
+
   };
 
   DrawingController.prototype.addToCanvas = function() {
