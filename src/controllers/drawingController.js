@@ -19,6 +19,7 @@
     eventListener.listenForColorChange(this);
     eventListener.listenForReset(this);
     eventListener.listenForEraser(this);
+    eventListener.listenForUndo(this);
   };
 
   DrawingController.prototype.addToCanvas = function() {
@@ -58,6 +59,18 @@
     this.drawingView = new DrawingView(this.drawing);
     this.drawingView.clearCanvas();
   };
+
+
+//
+DrawingController.prototype.undoLast = function () {
+  this.drawing.coordinates.pop();
+  this.drawingView.redrawAll();
+}
+
+
+
+
+
 
    exports.DrawingController = DrawingController;
 

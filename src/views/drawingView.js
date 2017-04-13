@@ -33,6 +33,25 @@
       [this.lastX, this.lastY] = [x, y];
   };
 
+  DrawingView.prototype.redrawAll = function () {
+
+    this.clearCanvas();
+    var length = this.drawing.coordinates.length
+
+    for (var i = 0; i < length - 1; i++) {
+
+        var pt = this.drawing.coordinates[i];
+
+        var nextPt = this.drawing.coordinates[i + 1];
+        var ctx = this.context
+            ctx.beginPath();
+            ctx.moveTo(pt.x, pt.y);
+            ctx.lineTo(nextPt.x, nextPt.y);
+            ctx.stroke();
+    }
+  }
+
+
   DrawingView.prototype.clearCanvas = function () {
     this.context.clearRect(0, 0, this.canvas.width, this.canvas.height)
   };
