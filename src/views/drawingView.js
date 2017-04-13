@@ -6,12 +6,17 @@
     this.drawing = drawing;
     this.canvas = document.getElementById('draw');
     this.context = this.canvas.getContext('2d');
-    this.colors = '#000';
+    this.colors = '#AB2567';
     this.isDrawing = false;
+    this.lineWidth = 10;
   }
 
   DrawingView.prototype.setColor = function(colorId) {
     this.colors = colorId;
+  }
+
+  DrawingView.prototype.setSize = function(sizeId) {
+    this.lineWidth = sizeId;
   }
 
   DrawingView.prototype.plotCoords = function(x, y) {
@@ -20,14 +25,12 @@
       this.context.strokeStyle = this.colors;
       this.context.lineJoin = 'round';
       this.context.lineCap = 'round';
-      this.context.lineWidth = 10;
+      this.context.lineWidth = this.lineWidth;
       this.context.beginPath();
       this.context.moveTo(this.lastX, this.lastY); //start from
       this.context.lineTo(x, y); //go to
       this.context.stroke();
       [this.lastX, this.lastY] = [x, y];
-//       this.context.fillStyle = this.colors;
-
   };
 
   DrawingView.prototype.clearCanvas = function () {

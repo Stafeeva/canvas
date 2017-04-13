@@ -4,12 +4,21 @@ describe("DrawingController", function() {
 
   var drawing;
   var drawingController;
+  var originalDocument;
 
   beforeEach(function() {
-
+    originalDocument = document.getElementById;
     drawing = jasmine.createSpyObj('drawing', ['addCoordinates', 'returnLastCoordinates']);
+    dummyCanvas = document.createElement('canvas');
+    dummyCanvas.setAttribute('id', 'draw');
+    dummyCanvas.setAttribute('context', '2d');
+    document['getElementById'] = function(){return dummyCanvas;};
     drawingController = new DrawingController(drawing);
   });
+
+  afterEach(function() {
+    document.getElementById = originalDocument;
+  })
 
   it("adds coordinates to the drawing", function() {
     var dummyEvent = {
@@ -27,13 +36,19 @@ describe("DrawingController", function() {
       expect(drawingController.drawingView.drawing).not.toEqual(drawing);
     });
   });
+
+  describe("tool-sizes", function() {
+    it('listens for a tool size change', function() {
+      var dummySize = document.createElement('button')
+      dummySize.id = '50'
+      document.getElementsByClassName = function() {
+        return [dummySize];
+      };
+
+      var sizeSpy = spyOn(dummySize, "addEventListener")
+      drawingController.listenForToolSizeChange();
+      expect(sizeSpy).toHaveBeenCalled();
+    });
+  });
 });
 
-// Should we be testing that addCoordinatesToDrawing is called when the click happens?
-
-// var event = new MouseEvent('click', {
-//   'clientX': 144,
-//   'clientY': 240
-// });
-
-// click = jasmine.createSpy('click')
