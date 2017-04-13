@@ -44,6 +44,10 @@
 
         var nextPt = this.drawing.coordinates[i + 1];
         var ctx = this.context
+        ctx.strokeStyle = pt.colour;
+        ctx.lineJoin = 'round';
+        ctx.lineCap = 'round';
+        ctx.lineWidth = pt.brush;
             ctx.beginPath();
             ctx.moveTo(pt.x, pt.y);
             ctx.lineTo(nextPt.x, nextPt.y);

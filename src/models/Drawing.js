@@ -6,8 +6,8 @@
     this.coordinates = [];
   }
 
-  Drawing.prototype.addCoordinates = function(x, y) {
-    this.coordinates.push(new Coordinates(x, y));
+  Drawing.prototype.addCoordinates = function(x, y, colour, brush) {
+    this.coordinates.push(new Coordinates(x, y, colour, brush));
   };
 
   Drawing.prototype.returnLastCoordinates = function () {

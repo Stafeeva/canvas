@@ -7,15 +7,16 @@
     this.drawingView = new DrawingView(drawing);
   }
 
-  DrawingController.prototype.addCoordinatesToDrawing = function(e) {
-    this.drawing.addCoordinates(e.offsetX, e.offsetY);
+  DrawingController.prototype.addCoordinatesToDrawing = function(e, colour, brush) {
+    // console.log(colour)
+    this.drawing.addCoordinates(e.offsetX, e.offsetY, colour, brush);
     this.addToCanvas();
   };
 
   DrawingController.prototype.listen = function () {
-    eventListener.listenForMouseDown(this);
+    eventListener.listenForMouseDown(this, this.drawingView);
     eventListener.listenForMouseUp(this);
-    eventListener.listenForMouseMove(this);
+    eventListener.listenForMouseMove(this, this.drawingView);
     eventListener.listenForColorChange(this);
     eventListener.listenForReset(this);
     eventListener.listenForEraser(this);

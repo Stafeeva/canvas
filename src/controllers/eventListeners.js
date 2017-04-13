@@ -3,24 +3,24 @@
 (function(exports) {
 
 
-  listenForMouseDown = function(controller) {
+  listenForMouseDown = function(controller, view) {
     document.addEventListener('mousedown', function(e) {
       controller.drawingView.isDrawing = true;
-      controller.addCoordinatesToDrawing(e.offsetX, e.offsetY);
+      controller.addCoordinatesToDrawing(e.offsetX, e.offsetY, view.colors, view.lineWidth);
+
     });
   };
 
   listenForMouseUp = function (controller) {
     document.addEventListener('mouseup', function(e) {
       controller.drawingView.isDrawing = false;
-      console.log(controller.drawing.coordinates)
     });
   };
 
-  listenForMouseMove= function (controller) {
+  listenForMouseMove= function (controller, view) {
     document.addEventListener('mousemove', function(e) {
       if (controller.drawingView.isDrawing === true) {
-      controller.addCoordinatesToDrawing(e);
+      controller.addCoordinatesToDrawing(e, view.colors, view.lineWidth);
       }
     });
   };
