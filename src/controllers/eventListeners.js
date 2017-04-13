@@ -2,11 +2,10 @@
 
 (function(exports) {
 
-
-  listenForMouseDown = function(controller) {
+  listenForMouseDown = function(controller, view) {
     document.addEventListener('mousedown', function(e) {
       controller.drawingView.isDrawing = true;
-      controller.addCoordinatesToDrawing(e.offsetX, e.offsetY);
+      controller.addCoordinatesToDrawing(e.offsetX, e.offsetY, view.colors, view.lineWidth);
     });
   };
 
@@ -16,9 +15,11 @@
     });
   };
 
-  listenForMouseMove= function (controller) {
+  listenForMouseMove= function (controller, view) {
     document.addEventListener('mousemove', function(e) {
-      controller.addCoordinatesToDrawing(e);
+      if (controller.drawingView.isDrawing === true) {
+      controller.addCoordinatesToDrawing(e, view.colors, view.lineWidth);
+      }
     });
   };
 
@@ -43,14 +44,28 @@
     });
   };
 
+  listenForUndo = function(controller) {
+    var interval;
+    var undo = document.getElementById('undo');
+    undo.addEventListener('mousedown', function() {
+      interval = setInterval(
+        function() {
+          controller.undoLast();
+        }, 5);
+    });
+    undo.addEventListener('mouseup', function() {
+      clearInterval(interval);
+    });
+  };
+
   listenForToolSizeChange = function(controller) {
     var sizeOptions = document.getElementsByClassName('tool-sizes');
     for (var i = 0; i < sizeOptions.length; i++) {
       sizeOptions[i].addEventListener('click', function(e) {
         controller.updateSize(e.target.id);
-      })
-    };
-  }
+      });
+    }
+  };
 
   listenForSave = function() {
     document.getElementById('save').addEventListener('click', function(e) {
@@ -65,6 +80,7 @@
     listenForMouseUp : listenForMouseUp,
     listenForColorChange : listenForColorChange,
     listenForReset : listenForReset,
+    listenForUndo : listenForUndo,
     listenForSave : listenForSave,
     listenForToolSizeChange : listenForToolSizeChange,
     listenForEraser : listenForEraser

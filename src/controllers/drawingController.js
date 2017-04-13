@@ -7,20 +7,21 @@
     this.drawingView = new DrawingView(drawing);
   }
 
-  DrawingController.prototype.addCoordinatesToDrawing = function(e) {
-    this.drawing.addCoordinates(e.offsetX, e.offsetY);
+  DrawingController.prototype.addCoordinatesToDrawing = function(e, colour, toolSize) {
+    this.drawing.addCoordinates(e.offsetX, e.offsetY, colour, toolSize);
     this.addToCanvas();
   };
 
   DrawingController.prototype.listen = function () {
-    eventListener.listenForMouseDown(this);
+    eventListener.listenForMouseDown(this, this.drawingView);
     eventListener.listenForMouseUp(this);
-    eventListener.listenForMouseMove(this);
+    eventListener.listenForMouseMove(this, this.drawingView);
     eventListener.listenForColorChange(this);
     eventListener.listenForReset(this);
     eventListener.listenForSave(this);
     eventListener.listenForToolSizeChange(this);
     eventListener.listenForEraser(this);
+    eventListener.listenForUndo(this);
   };
 
   DrawingController.prototype.addToCanvas = function() {
@@ -31,11 +32,11 @@
 
   DrawingController.prototype.updateSize = function(sizeId) {
     this.drawingView.updateSize(sizeId);
-  }
+  };
 
   DrawingController.prototype.updateColor = function(colorId) {
     this.drawingView.updateColor(colorId);
-  }
+  };
 
   DrawingController.prototype.resetDrawing = function () {
     this.drawing = new Drawing();
@@ -43,6 +44,11 @@
     this.drawingView.clearCanvas();
   };
 
-   exports.DrawingController = DrawingController;
+  DrawingController.prototype.undoLast = function () {
+    this.drawing.coordinates.pop();
+    this.drawingView.redrawAll();
+  };
+
+  exports.DrawingController = DrawingController;
 
 })(this);
