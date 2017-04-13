@@ -26,24 +26,6 @@
     this.drawingView.plotCoords(x, y);
   };
 
-//   DrawingController.prototype.listenForColorChange = function() {
-//     var controller = this;
-//     var colorOptions = document.getElementById('hex-colors').addEventListener('change', function(e) {
-//       var color = "#" + e.target.value;
-//       controller.updateColor(color);
-//     });
-//   }
-
-  DrawingController.prototype.listenForToolSizeChange = function() {
-    var sizeOptions = document.getElementsByClassName('tool-sizes');
-    var controller = this;
-    for (var i = 0; i < sizeOptions.length; i++) {
-      sizeOptions[i].addEventListener('click', function(e) {
-        controller.updateSize(e.target.id);
-      })
-    };
-  }
-
   DrawingController.prototype.updateSize = function(sizeId) {
     this.drawingView.setSize(sizeId);
   }

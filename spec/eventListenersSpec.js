@@ -31,4 +31,16 @@ describe("eventListener", function() {
     expect(colorSpy).toHaveBeenCalled();
   });
 
+  it('listens for a tool size change', function() {
+    var dummySize = document.createElement('button')
+    dummySize.id = '50'
+    document.getElementsByClassName = function() {
+      return [dummySize];
+    };
+
+    var sizeSpy = spyOn(dummySize, "addEventListener")
+    eventListener.listenForToolSizeChange();
+    expect(sizeSpy).toHaveBeenCalled();
+  });
+
 });

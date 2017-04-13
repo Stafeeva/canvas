@@ -36,19 +36,5 @@ describe("DrawingController", function() {
       expect(drawingController.drawingView.drawing).not.toEqual(drawing);
     });
   });
-
-  describe("tool-sizes", function() {
-    it('listens for a tool size change', function() {
-      var dummySize = document.createElement('button')
-      dummySize.id = '50'
-      document.getElementsByClassName = function() {
-        return [dummySize];
-      };
-
-      var sizeSpy = spyOn(dummySize, "addEventListener")
-      drawingController.listenForToolSizeChange();
-      expect(sizeSpy).toHaveBeenCalled();
-    });
-  });
+  
 });
-
