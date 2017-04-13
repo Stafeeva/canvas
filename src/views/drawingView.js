@@ -12,7 +12,7 @@
   }
 
   DrawingView.prototype.draw = function(x, y) {
-    if (!this.isDrawing) return; // break out if false
+    if (!this.isDrawing) return;
       this.defineColor();
       this.defineLineStyle();
       this.addLineBeginPosition();
@@ -21,7 +21,7 @@
 
   DrawingView.prototype.addLineBeginPosition = function () {
     this.context.beginPath();
-    this.context.moveTo(this.lastX, this.lastY); //start from
+    this.context.moveTo(this.lastX, this.lastY);
   };
 
   DrawingView.prototype.defineColor = function () {
@@ -35,7 +35,7 @@
   };
 
   DrawingView.prototype.addLineStroke = function () {
-    this.context.lineTo(x, y); //go to
+    this.context.lineTo(x, y);
     this.context.stroke();
     [this.lastX, this.lastY] = [x, y];
   };

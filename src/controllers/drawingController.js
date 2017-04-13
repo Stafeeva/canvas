@@ -27,15 +27,6 @@
     this.drawingView.draw(x, y);
   };
 
-//   DrawingController.prototype.listenForColorChange = function() {
-//     var controller = this;
-//     var colorOptions = document.getElementById('hex-colors').addEventListener('change', function(e) {
-//       var color = "#" + e.target.value;
-//       controller.updateColor(color);
-//     });
-//   }
-
-
   DrawingController.prototype.updateSize = function(sizeId) {
     this.drawingView.updateSize(sizeId);
   }
