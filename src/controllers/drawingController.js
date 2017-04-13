@@ -18,6 +18,7 @@
     eventListener.listenForMouseMove(this, this.drawingView);
     eventListener.listenForColorChange(this);
     eventListener.listenForReset(this);
+    eventListener.listenForSave(this);
     eventListener.listenForToolSizeChange(this);
     eventListener.listenForEraser(this);
     eventListener.listenForUndo(this);

@@ -67,6 +67,13 @@
     }
   };
 
+  listenForSave = function() {
+    document.getElementById('save').addEventListener('click', function(e) {
+    var canvas = document.getElementById('draw');
+    document.location.href = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
+    });
+  }
+
   exports.eventListener = {
     listenForMouseDown: listenForMouseDown,
     listenForMouseMove : listenForMouseMove,
@@ -74,6 +81,7 @@
     listenForColorChange : listenForColorChange,
     listenForReset : listenForReset,
     listenForUndo : listenForUndo,
+    listenForSave : listenForSave,
     listenForToolSizeChange : listenForToolSizeChange,
     listenForEraser : listenForEraser
   };
