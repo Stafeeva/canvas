@@ -16,7 +16,7 @@
       this.defineColor(this.colors);
       this.defineLineStyle(this.lineWidth);
       this.addLineBeginPosition(this.lastX, this.lastY);
-      this.addLineStroke();
+      this.addLineStroke(x, y);
   };
 
   DrawingView.prototype.addLineBeginPosition = function (x, y) {
@@ -34,26 +34,22 @@
     this.context.lineWidth = lineWidth;
   };
 
-  DrawingView.prototype.addLineStroke = function () {
+  DrawingView.prototype.addLineStroke = function (x, y) {
     this.context.lineTo(x, y);
     this.context.stroke();
     [this.lastX, this.lastY] = [x, y];
   };
 
   DrawingView.prototype.redrawAll = function () {
-
     this.clearCanvas();
     var length = this.drawing.coordinates.length;
-
     for (var i = 1; i < length - 1; i++) {
-
       var coord = this.drawing.coordinates[i];
       var nextCoord = this.drawing.coordinates[i + 1];
       this.defineColor(coord.colour);
       this.defineLineStyle(coord.toolSize);
       this.addLineBeginPosition(coord.x, coord.y);
-      this.context.lineTo(nextCoord.x, nextCoord.y);
-      this.context.stroke();
+      this.addLineStroke(nextCoord.x, nextCoord.y)
     }
   };
 

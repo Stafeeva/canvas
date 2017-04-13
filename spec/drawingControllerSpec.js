@@ -12,13 +12,15 @@ describe("DrawingController", function() {
     dummyCanvas = document.createElement('canvas');
     dummyCanvas.setAttribute('id', 'draw');
     dummyCanvas.setAttribute('context', '2d');
-    document['getElementById'] = function(){return dummyCanvas;};
+    document['getElementById'] = function() {
+      return dummyCanvas;
+    };
     drawingController = new DrawingController(drawing);
   });
 
   afterEach(function() {
     document.getElementById = originalDocument;
-  })
+  });
 
   it("adds coordinates to the drawing", function() {
     var dummyEvent = {
@@ -40,8 +42,8 @@ describe("DrawingController", function() {
   describe("undo", function() {
     it("removes the last coordinates being stored in the drawing model", function() {
       var dummyCoordinates =  {
-        x: 155,
-        y: 45
+          x: 155,
+          y: 45
         };
       drawingController.drawing.coordinates = [dummyCoordinates]
       drawingController.undoLast();
