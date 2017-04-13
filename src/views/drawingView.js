@@ -13,25 +13,25 @@
 
   DrawingView.prototype.draw = function(x, y) {
     if (!this.isDrawing) return;
-      this.defineColor();
-      this.defineLineStyle();
-      this.addLineBeginPosition();
+      this.defineColor(this.colors);
+      this.defineLineStyle(this.lineWidth);
+      this.addLineBeginPosition(this.lastX, this.lastY);
       this.addLineStroke();
   };
 
-  DrawingView.prototype.addLineBeginPosition = function () {
+  DrawingView.prototype.addLineBeginPosition = function (x, y) {
     this.context.beginPath();
-    this.context.moveTo(this.lastX, this.lastY);
+    this.context.moveTo(x, y);
   };
 
-  DrawingView.prototype.defineColor = function () {
-    this.context.strokeStyle = this.colors;
+  DrawingView.prototype.defineColor = function (colour) {
+    this.context.strokeStyle = colour;
   };
 
-  DrawingView.prototype.defineLineStyle = function () {
+  DrawingView.prototype.defineLineStyle = function (lineWidth) {
     this.context.lineJoin = 'round';
     this.context.lineCap = 'round';
-    this.context.lineWidth = this.lineWidth;
+    this.context.lineWidth = lineWidth;
   };
 
   DrawingView.prototype.addLineStroke = function () {
@@ -43,18 +43,15 @@
   DrawingView.prototype.redrawAll = function () {
 
     this.clearCanvas();
-    var length = this.drawing.coordinates.length
+    var length = this.drawing.coordinates.length;
 
     for (var i = 1; i < length - 1; i++) {
 
       var coord = this.drawing.coordinates[i];
       var nextCoord = this.drawing.coordinates[i + 1];
-      this.context.strokeStyle = coord.colour;
-      this.context.lineJoin = 'round';
-      this.context.lineCap = 'round';
-      this.context.lineWidth = coord.toolSize;
-      this.context.beginPath();
-      this.context.moveTo(coord.x, coord.y);
+      this.defineColor(coord.colour);
+      this.defineLineStyle(coord.toolSize);
+      this.addLineBeginPosition(coord.x, coord.y);
       this.context.lineTo(nextCoord.x, nextCoord.y);
       this.context.stroke();
     }

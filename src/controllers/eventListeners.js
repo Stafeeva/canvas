@@ -2,12 +2,10 @@
 
 (function(exports) {
 
-
   listenForMouseDown = function(controller, view) {
     document.addEventListener('mousedown', function(e) {
       controller.drawingView.isDrawing = true;
       controller.addCoordinatesToDrawing(e.offsetX, e.offsetY, view.colors, view.lineWidth);
-
     });
   };
 
