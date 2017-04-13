@@ -31,4 +31,38 @@ describe("eventListener", function() {
     expect(colorSpy).toHaveBeenCalled();
   });
 
+  it('listens for a tool size change', function() {
+    var dummySize = document.createElement('button')
+    dummySize.id = '50'
+    document.getElementsByClassName = function() {
+      return [dummySize];
+    };
+
+    var sizeSpy = spyOn(dummySize, "addEventListener")
+    eventListener.listenForToolSizeChange(dummyDrawingController);
+    expect(sizeSpy).toHaveBeenCalled();
+  });
+
+  it("listens for a eraser click", function() {
+    var dummyEraser = document.createElement('button');
+    dummyEraser.id = 'eraser';
+    document.getElementById= function() {
+      return dummyEraser;
+    };
+    var eraserSpy = spyOn(dummyEraser, "addEventListener");
+    eventListener.listenForEraser(dummyDrawingController);
+    expect(eraserSpy).toHaveBeenCalled();
+  });
+
+  it("listens for a reset click", function() {
+    var dummyReset = document.createElement('button');
+    dummyReset.id = 'reset';
+    document.getElementById= function() {
+      return dummyReset;
+    };
+    var resetSpy = spyOn(dummyReset, "addEventListener");
+    eventListener.listenForReset(dummyDrawingController);
+    expect(resetSpy).toHaveBeenCalled();
+  });
+
 });

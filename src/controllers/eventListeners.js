@@ -24,7 +24,9 @@
 
   listenForReset = function (controller) {
     var reset = document.getElementById("reset");
-    reset.addEventListener('click', controller.resetDrawing.bind(controller));
+    reset.addEventListener('click', function() {
+      controller.resetDrawing();
+    });
   };
 
   listenForColorChange = function(controller) {
@@ -32,6 +34,22 @@
       var color = "#" + e.target.value;
       controller.updateColor(color);
     });
+  };
+
+  listenForEraser = function(controller) {
+    var eraser = document.getElementById('eraser').addEventListener('click', function() {
+      var color = "#fff";
+      controller.updateColor(color);
+    });
+  };
+
+  listenForToolSizeChange = function(controller) {
+    var sizeOptions = document.getElementsByClassName('tool-sizes');
+    for (var i = 0; i < sizeOptions.length; i++) {
+      sizeOptions[i].addEventListener('click', function(e) {
+        controller.updateSize(e.target.id);
+      })
+    };
   }
 
   listenForSave = function() {
@@ -48,6 +66,8 @@
     listenForColorChange : listenForColorChange,
     listenForReset : listenForReset,
     listenForSave : listenForSave
+    listenForToolSizeChange : listenForToolSizeChange,
+    listenForEraser : listenForEraser
   };
 
 })(this);
