@@ -24,7 +24,9 @@
 
   listenForReset = function (controller) {
     var reset = document.getElementById("reset");
-    reset.addEventListener('click', controller.resetDrawing.bind(controller));
+    reset.addEventListener('click', function() {
+      controller.resetDrawing();
+    });
   };
 
   listenForColorChange = function(controller) {
@@ -32,14 +34,22 @@
       var color = "#" + e.target.value;
       controller.updateColor(color);
     });
-  }
+  };
+
+  listenForEraser = function(controller) {
+    var eraser = document.getElementById('eraser').addEventListener('click', function() {
+      var color = "#fff";
+      controller.updateColor(color);
+    });
+  };
 
   exports.eventListener = {
     listenForMouseDown: listenForMouseDown,
     listenForMouseMove : listenForMouseMove,
     listenForMouseUp : listenForMouseUp,
     listenForColorChange : listenForColorChange,
-    listenForReset : listenForReset
+    listenForReset : listenForReset,
+    listenForEraser : listenForEraser
   };
 
 })(this);
