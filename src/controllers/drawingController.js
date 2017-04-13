@@ -19,6 +19,7 @@
     eventListener.listenForColorChange(this);
     eventListener.listenForReset(this);
     eventListener.listenForToolSizeChange(this);
+    eventListener.listenForEraser(this);
   };
 
   DrawingController.prototype.addToCanvas = function() {
