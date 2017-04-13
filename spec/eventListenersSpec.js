@@ -1,7 +1,6 @@
 describe("eventListener", function() {
 
   var dummyDrawingController;
-  eventListener.listenForMouseDown();
 
   it("listens for a mousedown event", function() {
     var mouseDownSpy = spyOn(document, "addEventListener");
@@ -22,10 +21,10 @@ describe("eventListener", function() {
   });
 
   it('listens for a color change', function() {
-    var dummyColor = document.createElement('button');
-    dummyColor.id = '#ff0000';
-    document.getElementsByClassName = function() {
-      return [dummyColor];
+    var dummyColor = document.createElement('hex-colors');
+    dummyColor.value = 'ff0000';
+    document.getElementById= function() {
+      return dummyColor;
     };
     var colorSpy = spyOn(dummyColor, "addEventListener");
     eventListener.listenForColorChange(dummyDrawingController);
