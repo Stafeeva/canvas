@@ -1,0 +1,40 @@
+
+select option[value="#ff0000"] {
+  background-color: rgba(255, 0, 0, 0.7);;
+}
+
+body {
+  margin:0;
+  padding:0;
+  background-color: grey;
+}
+
+
+#palette {
+  width:200px;
+  background-color: #222;
+  display:inline-block;
+  float:left;
+}
+
+#draw {
+  background-color: #fff;
+  display:inline-block;
+  float:left;
+}
+
+#color-palette {
+  border-bottom: 1px solid grey;
+  padding:10px;
+}
+
+.glyphicons-eyedropper {
+  background-color: #fff;
+  color: #fff;
+}
+
+#tool-size-palette {
+  display:block;
+  border-bottom: 1px solid grey;
+  padding:10px;
+}

@@ -9,31 +9,29 @@
     <script src="src/controllers/eventListeners.js"></script>
     <script src="src/controllers/drawingController.js"></script>
     <script src="src/views/drawingView.js"></script>
-
-    <style style="text/css">
-
-    select option[value="#ff0000"] {
-      background-color: rgba(255, 0, 0, 0.7);;
-    }
-    </style>
+    <link rel="stylesheet" href="style.css"/>
 
   </head>
   <body>
-
-      <input id="hex-colors" class="jscolor" value="ab2567">
-
-      <button id="eraser">Eraser</button>
-
+    <div id="palette">
+      <div id=color-palette>
+        <span class="glyphicons glyphicons-eyedropper"></span>
+        <input id="hex-colors" class="jscolor" value="ab2567"/>
+      </div>
                     <!-- Tool Sizes -->
+    <div id="tool-size-palette">
       <button class="tool-sizes" id="2">X-Small</button>
       <button class="tool-sizes" id="6">Small</button>
       <button class="tool-sizes" id="10">Medium</button>
       <button class="tool-sizes" id="22">Large</button>
       <button class="tool-sizes" id="45">X-Large</button>
       <button class="tool-sizes" id="70">XX-Large</button>
-
+    </div>
+    <div id="delete-palette">
+      <button id="eraser">Eraser</button>
       <button id="reset">Reset</button>
-
+    </div>
+  </div>
     <div id="outer-canvas">
       <canvas style="border:2px solid black;" id="draw" width='800' height='800'></canvas>
     </div>
