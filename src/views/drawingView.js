@@ -11,31 +11,46 @@
     this.lineWidth = 10;
   }
 
-  DrawingView.prototype.setColor = function(colorId) {
-    this.colors = colorId;
-  }
-
-  DrawingView.prototype.setSize = function(sizeId) {
-    this.lineWidth = sizeId;
-  }
-
   DrawingView.prototype.draw = function(x, y) {
     if (!this.isDrawing) return; // break out if false
+      this.defineColor();
+      this.defineLineStyle();
+      this.addLineBeginPosition();
+      this.addLineStroke();
+  };
 
-      this.context.strokeStyle = this.colors;
-      this.context.lineJoin = 'round';
-      this.context.lineCap = 'round';
-      this.context.lineWidth = this.lineWidth;
-      this.context.beginPath();
-      this.context.moveTo(this.lastX, this.lastY); //start from
-      this.context.lineTo(x, y); //go to
-      this.context.stroke();
-      [this.lastX, this.lastY] = [x, y];
+  DrawingView.prototype.addLineBeginPosition = function () {
+    this.context.beginPath();
+    this.context.moveTo(this.lastX, this.lastY); //start from
+  };
+
+  DrawingView.prototype.defineColor = function () {
+    this.context.strokeStyle = this.colors;
+  };
+
+  DrawingView.prototype.defineLineStyle = function () {
+    this.context.lineJoin = 'round';
+    this.context.lineCap = 'round';
+    this.context.lineWidth = this.lineWidth;
+  };
+
+  DrawingView.prototype.addLineStroke = function () {
+    this.context.lineTo(x, y); //go to
+    this.context.stroke();
+    [this.lastX, this.lastY] = [x, y];
   };
 
   DrawingView.prototype.clearCanvas = function () {
     this.context.clearRect(0, 0, this.canvas.width, this.canvas.height)
   };
+
+  DrawingView.prototype.updateColor = function(colorId) {
+    this.colors = colorId;
+  }
+
+  DrawingView.prototype.updateSize = function(sizeId) {
+    this.lineWidth = sizeId;
+  }
 
   exports.DrawingView = DrawingView;
 })(this);

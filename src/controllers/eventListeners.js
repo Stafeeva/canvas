@@ -34,12 +34,22 @@
     });
   }
 
+  listenForToolSizeChange = function(controller) {
+    var sizeOptions = document.getElementsByClassName('tool-sizes');
+    for (var i = 0; i < sizeOptions.length; i++) {
+      sizeOptions[i].addEventListener('click', function(e) {
+        controller.updateSize(e.target.id);
+      })
+    };
+  }
+
   exports.eventListener = {
     listenForMouseDown: listenForMouseDown,
     listenForMouseMove : listenForMouseMove,
     listenForMouseUp : listenForMouseUp,
     listenForColorChange : listenForColorChange,
-    listenForReset : listenForReset
+    listenForReset : listenForReset,
+    listenForToolSizeChange : listenForToolSizeChange
   };
 
 })(this);
