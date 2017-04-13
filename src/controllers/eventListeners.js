@@ -23,6 +23,12 @@
     });
   };
 
+  listenForMouseOut= function (controller) {
+    document.addEventListener('mouseout', function(e) {
+      controller.drawingView.isDrawing = false;
+    });
+  };
+
   listenForReset = function (controller) {
     var reset = document.getElementById("reset");
     reset.addEventListener('click', function() {
@@ -78,6 +84,7 @@
     listenForMouseDown: listenForMouseDown,
     listenForMouseMove : listenForMouseMove,
     listenForMouseUp : listenForMouseUp,
+    listenForMouseOut : listenForMouseOut,
     listenForColorChange : listenForColorChange,
     listenForReset : listenForReset,
     listenForUndo : listenForUndo,

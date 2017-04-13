@@ -15,6 +15,7 @@
   DrawingController.prototype.listen = function () {
     eventListener.listenForMouseDown(this, this.drawingView);
     eventListener.listenForMouseUp(this);
+    eventListener.listenForMouseOut(this);
     eventListener.listenForMouseMove(this, this.drawingView);
     eventListener.listenForColorChange(this);
     eventListener.listenForReset(this);
@@ -22,6 +23,7 @@
     eventListener.listenForToolSizeChange(this);
     eventListener.listenForEraser(this);
     eventListener.listenForUndo(this);
+
   };
 
   DrawingController.prototype.addToCanvas = function() {

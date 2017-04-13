@@ -1,0 +1,79 @@
+
+select option[value="#ff0000"] {
+  background-color: rgba(255, 0, 0, 0.7);;
+}
+
+body {
+  margin:0;
+  padding:0;
+  background-color: #222;
+}
+
+#wrapper {
+  margin: 40px auto;
+}
+
+#palette {
+  height:602px;
+  width:120px;
+  background-color: #444;
+  display:inline-block;
+  float:left;
+}
+
+#draw {
+  background-color: #fff;
+  display:inline-block;
+  float:left;
+}
+
+#color-palette {
+  margin:10px;
+  border-bottom: 1px solid grey;
+  padding:10px;
+  color:#fff
+}
+
+.glyphicon {
+  margin: 0 auto;
+  font-size: 25px;
+  color: #000;
+  display:inline-block;
+}
+
+.tool-sizes {
+  display:block;
+  margin:5px auto;
+}
+
+.tool-sizes:hover {
+  border:2px solid yellow;
+}
+
+
+#tool-size-palette {
+  margin:10px;
+  display:block;
+  border-bottom: 1px solid grey;
+  padding:10px;
+}
+
+#delete-palette {
+  margin:20px;
+  border-bottom: 1px solid grey;
+  padding:10px;
+}
+
+#hex-colors {
+  width:80px;
+}
+#eraser, #reset {
+  background-color: white;
+  width:50px;
+  margin:3px;
+  display:block;
+}
+
+.tool-sizes:focus {
+  box-shadow: 2px 2px yellow;
+}
