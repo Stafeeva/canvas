@@ -25,45 +25,9 @@ describe("DrawingController", function() {
       clientX: 155,
       clientY: 45
     };
-
-    drawing.returnLastCoordinates.and.returnValue([1,100])
+    drawing.returnLastCoordinates.and.returnValue([1,100]);
     drawingController.addCoordinatesToDrawing(dummyEvent);
     expect(drawing.addCoordinates).toHaveBeenCalled();
-  });
-
-  describe('mouse events', function() {
-
-    it("listens for a click event", function() {
-      var clickSpy = spyOn(document, "addEventListener")
-      drawingController.listenForMouseDown();
-      expect(clickSpy).toHaveBeenCalled();
-    });
-
-    it("listens for a mousedown event", function() {
-      var mouseDownSpy = spyOn(document, "addEventListener");
-      drawingController.listenForMouseDown();
-      expect(mouseDownSpy).toHaveBeenCalled();
-    });
-
-    it("listens for a mouseup event", function() {
-      var mouseUpSpy = spyOn(document, "addEventListener");
-      drawingController.listenForMouseUp();
-      expect(mouseUpSpy).toHaveBeenCalled();
-    });
-  })
-
-  describe("colors", function() {
-    it('listens for a color change', function() {
-      var dummyColor = document.createElement('hex-colors');
-      dummyColor.value = 'ff0000';
-      document.getElementById = function() {
-        return dummyColor;
-      };
-
-      var colorSpy = spyOn(dummyColor, "addEventListener")
-      drawingController.listenForColorChange();
-      expect(colorSpy).toHaveBeenCalled();
-    });
   });
 
   describe("reset", function() {
@@ -75,17 +39,16 @@ describe("DrawingController", function() {
 
   describe("tool-sizes", function() {
     it('listens for a tool size change', function() {
-    var dummySize = document.createElement('button')
-    dummySize.id = '50'
-    document.getElementsByClassName = function() {
-      return [dummySize];
-    };
+      var dummySize = document.createElement('button')
+      dummySize.id = '50'
+      document.getElementsByClassName = function() {
+        return [dummySize];
+      };
 
-    var sizeSpy = spyOn(dummySize, "addEventListener")
-    drawingController.listenForToolSizeChange();
-    expect(sizeSpy).toHaveBeenCalled();
+      var sizeSpy = spyOn(dummySize, "addEventListener")
+      drawingController.listenForToolSizeChange();
+      expect(sizeSpy).toHaveBeenCalled();
+    });
   });
 });
-});
 
-// Should we be testing that addCoordinatesToDrawing is called when the click happens?
