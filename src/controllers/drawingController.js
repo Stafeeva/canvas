@@ -18,6 +18,7 @@
     eventListener.listenForMouseMove(this);
     eventListener.listenForColorChange(this);
     eventListener.listenForReset(this);
+    eventListener.listenForSave(this);
   };
 
   DrawingController.prototype.addToCanvas = function() {
