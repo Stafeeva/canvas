@@ -9,32 +9,40 @@
     <script src="src/controllers/eventListeners.js"></script>
     <script src="src/controllers/drawingController.js"></script>
     <script src="src/views/drawingView.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+
     <link rel="stylesheet" href="style.css"/>
+
 
   </head>
   <body>
+    <div id="wrapper">
     <div id="palette">
       <div id=color-palette>
-        <span class="glyphicons glyphicons-eyedropper"></span>
+        <p style="color:#fff;margin:0px;">Color:</p>
+        <i class="glyphicon glyphicon-bucket"></i>
         <input id="hex-colors" class="jscolor" value="ab2567"/>
       </div>
                     <!-- Tool Sizes -->
     <div id="tool-size-palette">
-      <button class="tool-sizes" id="2">X-Small</button>
-      <button class="tool-sizes" id="6">Small</button>
-      <button class="tool-sizes" id="10">Medium</button>
-      <button class="tool-sizes" id="22">Large</button>
-      <button class="tool-sizes" id="45">X-Large</button>
-      <button class="tool-sizes" id="70">XX-Large</button>
+      <p style="color:#fff;margin-bottom:30px;">Brush Size:</p>
+      <img class="tool-sizes" id="2" style="height:12px;width:10px" src="dot.png"/>
+      <img class="tool-sizes" id="6" style="height:14px;width:13px" src="dot.png"/>
+      <img class="tool-sizes" id="10" style="height:21px;width:20px" src="dot.png"/>
+      <img class="tool-sizes" id="22" style="height:31px;width:30px" src="dot.png"/>
+      <img class="tool-sizes" id="45" style="height:41px;width:40px" src="dot.png"/>
+      <img class="tool-sizes" id="70" style="height:51px;width:50px" src="dot.png"/>
     </div>
     <div id="delete-palette">
-      <button id="eraser">Eraser</button>
+
+      <button id="eraser"><i class="glyphicon glyphicon-erase"></i></button>
       <button id="reset">Reset</button>
     </div>
   </div>
     <div id="outer-canvas">
-      <canvas style="border:2px solid black;" id="draw" width='800' height='800'></canvas>
+      <canvas style="border:2px solid black;" id="draw" width='1100' height='600'></canvas>
     </div>
     <script src="index.js"></script>
+  </div>
   </body>
 </html>
