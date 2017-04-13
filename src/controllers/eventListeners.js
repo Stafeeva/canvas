@@ -65,7 +65,7 @@
     listenForMouseUp : listenForMouseUp,
     listenForColorChange : listenForColorChange,
     listenForReset : listenForReset,
-    listenForSave : listenForSave
+    listenForSave : listenForSave,
     listenForToolSizeChange : listenForToolSizeChange,
     listenForEraser : listenForEraser
   };
