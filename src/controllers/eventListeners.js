@@ -45,17 +45,29 @@
       controller.updateColor(color);
     });
   };
-  var interval
+
   listenForUndo = function(controller) {
-    var undo = document.getElementById('undo')
+    var interval;
+    var undo = document.getElementById('undo');
     undo.addEventListener('mousedown', function() {
       interval = setInterval(
-        function(){controller.undoLast()}, 5);
+        function() {
+          controller.undoLast();
+        }, 5);
     });
     undo.addEventListener('mouseup', function() {
       clearInterval(interval);
     });
-  }
+  };
+
+  listenForToolSizeChange = function(controller) {
+    var sizeOptions = document.getElementsByClassName('tool-sizes');
+    for (var i = 0; i < sizeOptions.length; i++) {
+      sizeOptions[i].addEventListener('click', function(e) {
+        controller.updateSize(e.target.id);
+      });
+    }
+  };
 
   exports.eventListener = {
     listenForMouseDown: listenForMouseDown,
@@ -63,8 +75,9 @@
     listenForMouseUp : listenForMouseUp,
     listenForColorChange : listenForColorChange,
     listenForReset : listenForReset,
-    listenForEraser : listenForEraser,
-    listenForUndo : listenForUndo
+    listenForUndo : listenForUndo,
+    listenForToolSizeChange : listenForToolSizeChange,
+    listenForEraser : listenForEraser
   };
 
 })(this);

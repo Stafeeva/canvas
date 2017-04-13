@@ -7,9 +7,8 @@
     this.drawingView = new DrawingView(drawing);
   }
 
-  DrawingController.prototype.addCoordinatesToDrawing = function(e, colour, brush) {
-    // console.log(colour)
-    this.drawing.addCoordinates(e.offsetX, e.offsetY, colour, brush);
+  DrawingController.prototype.addCoordinatesToDrawing = function(e, colour, toolSize) {
+    this.drawing.addCoordinates(e.offsetX, e.offsetY, colour, toolSize);
     this.addToCanvas();
   };
 
@@ -19,6 +18,7 @@
     eventListener.listenForMouseMove(this, this.drawingView);
     eventListener.listenForColorChange(this);
     eventListener.listenForReset(this);
+    eventListener.listenForToolSizeChange(this);
     eventListener.listenForEraser(this);
     eventListener.listenForUndo(this);
   };
@@ -29,31 +29,13 @@
     this.drawingView.draw(x, y);
   };
 
-//   DrawingController.prototype.listenForColorChange = function() {
-//     var controller = this;
-//     var colorOptions = document.getElementById('hex-colors').addEventListener('change', function(e) {
-//       var color = "#" + e.target.value;
-//       controller.updateColor(color);
-//     });
-//   }
-
-  DrawingController.prototype.listenForToolSizeChange = function() {
-    var sizeOptions = document.getElementsByClassName('tool-sizes');
-    var controller = this;
-    for (var i = 0; i < sizeOptions.length; i++) {
-      sizeOptions[i].addEventListener('click', function(e) {
-        controller.updateSize(e.target.id);
-      })
-    };
-  }
-
   DrawingController.prototype.updateSize = function(sizeId) {
-    this.drawingView.setSize(sizeId);
-  }
+    this.drawingView.updateSize(sizeId);
+  };
 
   DrawingController.prototype.updateColor = function(colorId) {
-    this.drawingView.setColor(colorId);
-  }
+    this.drawingView.updateColor(colorId);
+  };
 
   DrawingController.prototype.resetDrawing = function () {
     this.drawing = new Drawing();
@@ -61,18 +43,11 @@
     this.drawingView.clearCanvas();
   };
 
+  DrawingController.prototype.undoLast = function () {
+    this.drawing.coordinates.pop();
+    this.drawingView.redrawAll();
+  };
 
-//
-DrawingController.prototype.undoLast = function () {
-  this.drawing.coordinates.pop();
-  this.drawingView.redrawAll();
-}
-
-
-
-
-
-
-   exports.DrawingController = DrawingController;
+  exports.DrawingController = DrawingController;
 
 })(this);

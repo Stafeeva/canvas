@@ -2,11 +2,11 @@
 
 ( function(exports) {
 
-  function Coordinates(x, y, colour, brush) {
+  function Coordinates(x, y, colour, toolSize) {
     this.x = x;
     this.y = y;
     this.colour = colour;
-    this.brush = brush;
+    this.toolSize = toolSize;
   }
 
   exports.Coordinates = Coordinates;
