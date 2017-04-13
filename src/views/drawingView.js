@@ -19,7 +19,7 @@
     this.lineWidth = sizeId;
   }
 
-  DrawingView.prototype.plotCoords = function(x, y) {
+  DrawingView.prototype.draw = function(x, y) {
     if (!this.isDrawing) return; // break out if false
 
       this.context.strokeStyle = this.colors;

@@ -23,7 +23,7 @@
   DrawingController.prototype.addToCanvas = function() {
     x = this.drawing.returnLastCoordinates().x;
     y = this.drawing.returnLastCoordinates().y;
-    this.drawingView.plotCoords(x, y);
+    this.drawingView.draw(x, y);
   };
 
 //   DrawingController.prototype.listenForColorChange = function() {
